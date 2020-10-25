@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Leaflet Sync Demo</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet-src.js" crossorigin=""></script>
+	  <!-- Load Esri Leaflet from CDN -->
+  <script src="https://unpkg.com/esri-leaflet@2.5.1/dist/esri-leaflet.js"
+    integrity="sha512-q7X96AASUF0hol5Ih7AeZpRF6smJS55lcvy+GLWzJfZN+31/BQ8cgNx2FGF+IQSA4z2jHwB20vml+drmooqzzQ=="
+    crossorigin=""></script>
+
+  <!-- Load Leaflet MarkerCluster and Esri Leaflet Cluster from CDN -->
+  <link rel="stylesheet" type="text/css"
+    href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"
+    integrity="sha512-BBToHPBStgMiw0lD4AtkRIZmdndhB6aQbXpX7omcrXeG2PauGBl2lzq2xUZTxaLxYz5IDHlmneCZ1IJ+P3kYtQ=="
+    crossorigin="">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"
+    integrity="sha512-RLEjtaFGdC4iQMJDbMzim/dOvAu+8Qp9sw7QE4wIMYcg2goVoivzwgSZq9CsIxp4xKAZPKh5J2f2lOko2Ze6FQ=="
+    crossorigin="">
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"
+    integrity="sha512-MQlyPV+ol2lp4KodaU/Xmrn+txc1TP15pOBF/2Sfre7MRsA/pB4Vy58bEqe9u7a7DczMLtU5wT8n7OblJepKbg=="
+    crossorigin=""></script>
+  <script src="https://unpkg.com/esri-leaflet-cluster@2.1.0/dist/esri-leaflet-cluster.js"
+    integrity="sha512-fEdNFHisleVtEYdLhW4Z2RsR7TN6hLutE/+O4D+skfTNY2rlHm8HOZARPWkdrFFy/+i2KjFxcZAKTUWaVfbV0g=="
+    crossorigin=""></script>
+	<!-- Load Esri Geocoder from CDN -->
+<link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.css"
+    integrity="sha512-IM3Hs+feyi40yZhDH6kV8vQMg4Fh20s9OzInIIAc4nx7aMYMfo+IenRUekoYsHZqGkREUgx0VvlEsgm7nCDW9g=="
+    crossorigin="">
+  <script src="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.js"
+    integrity="sha512-HrFUyCEtIpxZloTgEKKMq4RFYhxjJkCiF5sDxuAokklOeZ68U2NPfh4MFtyIVWlsKtVbK5GD2/JzFyAfvT5ejA=="
+    crossorigin=""></script>
+    <style type="text/css">
+        html, body { width: 100%; height: 100%; margin: 0; }
+        #map1, #map2 { width: 49.5%; height: 100%; }
+        #map1 { float: left; }
+        #map2 { float: right; }
+		 <script src="L.Map.Sync.js"></script>
+    </style>
+</head>
+
+<body>
+   <span id="wrap"> <div id="map1"></div>
+    <div id="map2"></div>
+	</span>
+    <script src="L.Map.Sync.js"></script>
+
+    <script type="text/javascript">
+        var center = [34.18084,  -118.308968];
+
+        //var Esri_WorldGrayCanvas = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+			//attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+			//maxZoom: 16
+		//});
+		
+		var Esri_WorldGrayCanvas = L.esri.basemapLayer('Gray');
+		var graylabels = L.esri.basemapLayer('GrayLabels');
+        //var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+			//attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+			//subdomains: 'abcd',
+			//maxZoom: 19
+		//});
+		
+		var CartoDB_DarkMatter = L.esri.basemapLayer('DarkGray');
+		var darklabels = L.esri.basemapLayer('DarkGrayLabels');
+		
+		var clustr2019 = L.esri.Cluster.featureLayer({
+			url: 'https://services.arcgis.com/RmCCgQtiZLDCtblq/arcgis/rest/services/addresses_2019/FeatureServer/0'
+		});
+  
+		clustr2019.bindPopup(function (evt) {
+			var featureDate = new Date(evt.feature.properties.Date);
+			var HouseNum = evt.feature.properties.HouseNum;
+			var Street = evt.feature.properties.Street
+			return HouseNum + " " + Street + "<br>Assigned: " + featureDate.toLocaleDateString()
+		});
+		
+		var clustr2020 = L.esri.Cluster.featureLayer({
+			url: 'https://services.arcgis.com/RmCCgQtiZLDCtblq/arcgis/rest/services/addresses_2020/FeatureServer/0'
+		});
+		
+		clustr2020.bindPopup(function (evt) {
+			var featureDate = new Date(evt.feature.properties.Date);
+			var HouseNum = evt.feature.properties.HouseNum;
+			var Street = evt.feature.properties.Street
+			return HouseNum + " " + Street + "<br>Assigned: " + featureDate.toLocaleDateString();
+		});
+		
+        var map1 = L.map('map1', {
+            layers: [Esri_WorldGrayCanvas, graylabels, clustr2019],
+            center: center,
+            zoom: 10
+        });
+
+        map1.attributionControl.setPrefix('');
+		
+		
+
+        var map2 = L.map('map2', {
+            layers: [CartoDB_DarkMatter, clustr2020, darklabels],
+            center: center,
+            zoom: 10,
+            zoomControl: false
+        });
+
+        map1.sync(map2);
+        map2.sync(map1);
+		
+		var info = L.control();
+
+info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+// method that we will use to update the control based on feature properties passed
+info.update = function (props) {
+    this._div.innerHTML = "<span style='font-size:35px;font-weight: 800;'>2019</span>";
+};
+
+info.addTo(map1);
+
+		var info2 = L.control({position:'topleft'});
+
+info2.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info2'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+// method that we will use to update the control based on feature properties passed
+info2.update = function (props) {
+    this._div.innerHTML = "<span style='font-size:35px;font-weight: 800; color: white;'>2020</span>";
+};
+
+info2.addTo(map2);
+
+
+var corner1 = L.latLng(34.817788, -118.885098),
+		corner2 = L.latLng(33.513344, -117.419580),
+		bounds = L.latLngBounds(corner1, corner2);
+	
+	 var searchControl = L.esri.Geocoding.geosearch({searchBounds: bounds}).addTo(map1);
+
+  
+  
+
+
+    </script>
+</body>
+</html>
