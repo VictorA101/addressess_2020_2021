@@ -73,9 +73,9 @@
 			url: 'https://services.arcgis.com/RmCCgQtiZLDCtblq/arcgis/rest/services/unincorporated/FeatureServer/0'
 		});
   		boundary1.setStyle({
-  			color: 'yellow',
+  			color: '#cece00',
 			weight: .5
-		})
+		});
 	    
 	    var boundary2 = L.esri.featureLayer({
 			url: 'https://services.arcgis.com/RmCCgQtiZLDCtblq/arcgis/rest/services/unincorporated/FeatureServer/0'
@@ -83,7 +83,7 @@
   		boundary2.setStyle({
   			color: 'yellow',
 			weight: .5
-		})
+		});
 	    
 		clustr2019.bindPopup(function (evt) {
 			var featureDate = new Date(evt.feature.properties.Date);
