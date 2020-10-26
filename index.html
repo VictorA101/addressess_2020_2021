@@ -72,7 +72,9 @@
 	    var boundary1 = L.esri.featureLayer({
 			url: 'https://services.arcgis.com/RmCCgQtiZLDCtblq/arcgis/rest/services/unincorporated/FeatureServer/0'
 		});
-  
+  		boundary1.setStyle({
+  			color: 'yellow'
+		})
 		clustr2019.bindPopup(function (evt) {
 			var featureDate = new Date(evt.feature.properties.Date);
 			var HouseNum = evt.feature.properties.HouseNum;
