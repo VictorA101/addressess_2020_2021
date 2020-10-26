@@ -68,6 +68,10 @@
 		var clustr2019 = L.esri.Cluster.featureLayer({
 			url: 'https://services.arcgis.com/RmCCgQtiZLDCtblq/arcgis/rest/services/addresses_2019/FeatureServer/0'
 		});
+	    
+	    var boundary1 = L.esri.featureLayer({
+			url: 'https://services.arcgis.com/RmCCgQtiZLDCtblq/arcgis/rest/services/unincorporated/FeatureServer/0'
+		});
   
 		clustr2019.bindPopup(function (evt) {
 			var featureDate = new Date(evt.feature.properties.Date);
@@ -88,7 +92,7 @@
 		});
 		
         var map1 = L.map('map1', {
-            layers: [Esri_WorldGrayCanvas, graylabels, clustr2019],
+            layers: [Esri_WorldGrayCanvas, graylabels, clustr2019, boundary1],
             center: center,
             zoom: 9
         });
