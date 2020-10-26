@@ -73,7 +73,8 @@
 			url: 'https://services.arcgis.com/RmCCgQtiZLDCtblq/arcgis/rest/services/unincorporated/FeatureServer/0'
 		});
   		boundary1.setStyle({
-  			color: 'yellow'
+  			color: 'yellow',
+			weight: 1
 		})
 		clustr2019.bindPopup(function (evt) {
 			var featureDate = new Date(evt.feature.properties.Date);
