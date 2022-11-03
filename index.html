@@ -56,12 +56,15 @@
 		
 		var Esri_WorldGrayCanvas = L.esri.basemapLayer('Gray');
 		var graylabels = L.esri.basemapLayer('GrayLabels');
+	    	var wmsLayer2021 = L.tileLayer.wms('https://svc.pictometry.com/Image/BCC27E3E-766E-CE0B-7D11-AA4760AC43ED/wmts', {
+    			layers: 'PICT-LARIAC6--pQjhm1WxCC'
+				});
         //var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
 			//attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 			//subdomains: 'abcd',
-			//maxZoom: 20
+			//maxZoom: 16
 		//});
-		var wmsLayer = L.tileLayer.wms('https://svc.pictometry.com/Image/BCC27E3E-766E-CE0B-7D11-AA4760AC43ED/wms', {
+		var wmsLayer2022 = L.tileLayer.wms('https://svc.pictometry.com/Image/BCC27E3E-766E-CE0B-7D11-AA4760AC43ED/wms', {
     			layers: 'PICT-LARIAC6--X1dnmhXZf9'
 				});
 		var CartoDB_DarkMatter = L.esri.basemapLayer('DarkGray');
@@ -108,7 +111,7 @@
 		});
 		
         var map1 = L.map('map1', {
-            layers: [Esri_WorldGrayCanvas, graylabels, clustr2019, boundary1],
+            layers: [msLayer2021, Esri_WorldGrayCanvas, graylabels, clustr2019, boundary1],
             center: center,
             zoom: 9
         });
@@ -118,7 +121,7 @@
 		
 
         var map2 = L.map('map2', {
-            layers: [wmsLayer, CartoDB_DarkMatter, clustr2020, darklabels, boundary2],
+            layers: [wmsLayer2022, CartoDB_DarkMatter, clustr2020, darklabels, boundary2],
             center: center,
             zoom: 9,
             zoomControl: false
