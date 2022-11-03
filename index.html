@@ -86,11 +86,11 @@
 		});
 	    
 		clustr2019.bindPopup(function (evt) {
-			var units = evt.feature.properties.Unit_1;
-			var featureDate = new Date(evt.feature.properties.Date);
-			var HouseNum = evt.feature.properties.HouseNum;
-			var Street = evt.feature.properties.Street
-			return HouseNum + " " + Street + "<br>Assigned: " + featureDate.toLocaleDateString() + "<br>Unit(s): " +units;
+			var featureDate = new Date(evt.feature.properties.UpdateDate);
+			var HouseNum = evt.feature.properties.Number;
+			var Numsuffix = evt.feature.properties.NumSuffix;
+			var Street = evt.feature.properties.FullName
+			return HouseNum + Numsuffix+ " " + Street + "<br>Assigned: " + featureDate.toLocaleDateString();
 		});
 		
 		var clustr2020 = L.esri.Cluster.featureLayer({
@@ -98,13 +98,11 @@
 		});
 		
 		clustr2020.bindPopup(function (evt) {
-			var Number_of_Addre = evt.feature.properties.Number_of_Addre;
-			var NewAddress = evt.feature.properties.NewAddress;
-			var CompletedDate = evt.feature.properties.Plan_Complete_Date;
-			var featureDate = new Date(evt.feature.properties.Date);
-			var HouseNum = evt.feature.properties.HouseNum;
-			var Street = evt.feature.properties.Street
-			return NewAddress + "<br>Assigned: " + CompletedDate + "<br>Unit(s): " +Number_of_Addre;
+			var featureDate = new Date(evt.feature.properties.UpdateDate);
+			var HouseNum = evt.feature.properties.Number;
+			var Numsuffix = evt.feature.properties.NumSuffix;
+			var Street = evt.feature.properties.FullName
+			return HouseNum + Numsuffix+ " " + Street + "<br>Assigned: " + featureDate.toLocaleDateString();
 		});
 		
         var map1 = L.map('map1', {
