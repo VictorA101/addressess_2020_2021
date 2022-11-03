@@ -95,14 +95,6 @@
 		
 		var clustr2020 = L.esri.Cluster.featureLayer({
 			url: 'https://services.arcgis.com/RmCCgQtiZLDCtblq/ArcGIS/rest/services/Addresses_Mapped_2022/FeatureServer/0'
-	// this function defines how the icons representing clusters are created
-    		iconCreateFunction: function (cluster) {
-     	// get the number of items in the cluster
-     		 var count = cluster.getChildCount();
-
-       // figure out how many digits long the number is
-      		var digits = (count + '').length;
-
 		});
 		
 		clustr2020.bindPopup(function (evt) {
