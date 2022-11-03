@@ -97,11 +97,13 @@
 		});
 		
 		clustr2020.bindPopup(function (evt) {
+			var Number_of_Addre = evt.feature.properties.Number_of_Addre;
+			var NewAddress = evt.feature.properties.NewAddress;
 			var CompletedDate = evt.feature.properties.Plan_Complete_Date;
 			var featureDate = new Date(evt.feature.properties.Date);
 			var HouseNum = evt.feature.properties.HouseNum;
 			var Street = evt.feature.properties.Street
-			return HouseNum + " " + Street + "<br>Assigned: " + CompletedDate;
+			return NewAddress + "<br>Assigned: " + CompletedDate + "<br>Unit(s): " +Number_of_Addre;
 		});
 		
         var map1 = L.map('map1', {
