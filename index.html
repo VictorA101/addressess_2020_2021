@@ -64,7 +64,7 @@
 	    	var wmsLayer = L.tileLayer.wms('https://svc.pictometry.com/Image/BCC27E3E-766E-CE0B-7D11-AA4760AC43ED/wmts/', { layers: 'PICT-LARIAC6--pCqXruF2NL', });
 		
 		//var CartoDB_DarkMatter = L.esri.basemapLayer('DarkGray');
-		//var darklabels = L.esri.basemapLayer('DarkGrayLabels');
+		var darklabels = L.esri.basemapLayer('DarkGrayLabels');
 		
 		var clustr2019 = L.esri.Cluster.featureLayer({
 			url: 'https://services.arcgis.com/RmCCgQtiZLDCtblq/ArcGIS/rest/services/Addresses_Mapped_2021_CAMS/FeatureServer/0'
