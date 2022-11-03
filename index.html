@@ -61,8 +61,9 @@
 			//subdomains: 'abcd',
 			//maxZoom: 19
 		//});
-	    	var wmsLayer = L.tileLayer.wms('https://svc.pictometry.com/Image/BCC27E3E-766E-CE0B-7D11-AA4760AC43ED/wmts/', { layers: 'PICT-LARIAC6--pCqXruF2NL', });
-		
+		var wmsLayer = L.tileLayer.wms('https://svc.pictometry.com/Image/BCC27E3E-766E-CE0B-7D11-AA4760AC43ED/wms', {
+    		layers: 'PICT-LARIAC6--X1dnmhXZf9'
+				}).addTo(map);
 		var CartoDB_DarkMatter = L.esri.basemapLayer('DarkGray');
 		var darklabels = L.esri.basemapLayer('DarkGrayLabels');
 		
@@ -117,7 +118,7 @@
 		
 
         var map2 = L.map('map2', {
-            layers: [wmsLayer, CartoDB_DarkMatter, clustr2020, darklabels, boundary2],
+            layers: [wmsLayer, clustr2020, darklabels, boundary2],
             center: center,
             zoom: 9,
             zoomControl: false
