@@ -86,10 +86,11 @@
 		});
 	    
 		clustr2019.bindPopup(function (evt) {
+			var units = evt.feature.properties.Unit_1;
 			var featureDate = new Date(evt.feature.properties.Date);
 			var HouseNum = evt.feature.properties.HouseNum;
 			var Street = evt.feature.properties.Street
-			return HouseNum + " " + Street + "<br>Assigned: " + featureDate.toLocaleDateString()
+			return HouseNum + " " + Street + "<br>Assigned: " + featureDate.toLocaleDateString() + "<br>Unit(s): " +units;
 		});
 		
 		var clustr2020 = L.esri.Cluster.featureLayer({
