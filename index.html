@@ -89,7 +89,7 @@
 			var featureDate = new Date(evt.feature.properties.UpdateDate);
 			var HouseNum = evt.feature.properties.Number;
 			var Numsuffix = evt.feature.properties.NumSuffix;
-			var Street = evt.feature.properties.FullName
+			var Street = evt.feature.properties.FullName;
 			return HouseNum + Numsuffix+ " " + Street + "<br>Assigned: " + featureDate.toLocaleDateString();
 		});
 		
@@ -101,7 +101,7 @@
 			var featureDate = new Date(evt.feature.properties.UpdateDate);
 			var HouseNum = evt.feature.properties.Number;
 			var Numsuffix = evt.feature.properties.NumSuffix;
-			var Street = evt.feature.properties.FullName
+			var Street = evt.feature.properties.FullName;
 			return HouseNum + Numsuffix+ " " + Street + "<br>Assigned: " + featureDate.toLocaleDateString();
 		});
 		
