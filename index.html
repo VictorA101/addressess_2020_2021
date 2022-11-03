@@ -163,6 +163,13 @@ var corner1 = L.latLng(34.817788, -118.885098),
 		bounds = L.latLngBounds(corner1, corner2);
 	
 	 var searchControl = L.esri.Geocoding.geosearch({searchBounds: bounds}).addTo(map1);
+	    
+	   
+var markers = L.markerClusterGroup({
+	iconCreateFunction: function(cluster) {
+		return L.divIcon({ html: '<b>' + cluster.getChildCount() + '</b>' });
+	}
+});
 
   
   
