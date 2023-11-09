@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Addresses Mapped in 2021 and 2022</title>
+    <title>Addresses Mapped in 2022 and 2023</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet-src.js" crossorigin=""></script>
 	  <!-- Load Esri Leaflet from CDN -->
@@ -72,7 +72,7 @@
 		var darklabels = L.esri.basemapLayer('DarkGrayLabels');
 		
 		var clustr2019 = L.esri.Cluster.featureLayer({
-			url: 'https://services.arcgis.com/RmCCgQtiZLDCtblq/ArcGIS/rest/services/Addresses_Mapped_2021_CAMS/FeatureServer/0'
+			url: 'https://services.arcgis.com/RmCCgQtiZLDCtblq/ArcGIS/rest/services/Addresses_Mapped_2022_CAMS/FeatureServer/0'
 		});
 	    
 	    var boundary1 = L.esri.featureLayer({
@@ -100,7 +100,7 @@
 		});
 		
 		var clustr2020 = L.esri.Cluster.featureLayer({
-			url: 'https://services.arcgis.com/RmCCgQtiZLDCtblq/ArcGIS/rest/services/Addresses_Mapped_2022_CAMS/FeatureServer/0'
+			url: 'https://services.arcgis.com/RmCCgQtiZLDCtblq/ArcGIS/rest/services/CAMS_Address_Points_2023/FeatureServer/0'
 		});
 		
 		clustr2020.bindPopup(function (evt) {
@@ -141,7 +141,7 @@ info.onAdd = function (map) {
 
 // method that we will use to update the control based on feature properties passed
 info.update = function (props) {
-    this._div.innerHTML = "<span style='font-size:35px;font-weight: 800;'>2021</span>";
+    this._div.innerHTML = "<span style='font-size:35px;font-weight: 800;'>2022</span>";
 };
 
 info.addTo(map1);
@@ -156,7 +156,7 @@ info2.onAdd = function (map) {
 
 // method that we will use to update the control based on feature properties passed
 info2.update = function (props) {
-    this._div.innerHTML = "<span style='font-size:35px;font-weight: 800; color: white;'>2022</span>";
+    this._div.innerHTML = "<span style='font-size:35px;font-weight: 800; color: white;'>2023</span>";
 };
 
 info2.addTo(map2);
